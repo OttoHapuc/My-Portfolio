@@ -1,23 +1,22 @@
+import GlobalStyles from "./assets/css/GlobalStyles";
+import UserContex from "./contexts/ValoresBase";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { useState } from "react";
 
+import Home from "./pages/Home/Home";
 
 function App() {
+
+  const [teste, setTeste] = useState("")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContex.Provider value={{teste}}>
+      <BrowserRouter>
+        <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContex.Provider>
   );
 }
 
